@@ -10,13 +10,15 @@
 		* {
 			margin: 0;
 			padding: 0;
+			box-sizing: border-box;
 		}
 
 		.window {
 			width: 400px;
 			height: 300px;
-			margin: 50px auto;
+			margin: 50px auto 0;
 			overflow: hidden;
+			box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
 		}
 
 		.images {
@@ -30,11 +32,22 @@
 		}
 
 		.btns {
+			width: 400px;
+			height: 60px;
+			margin: 2px auto;
+			box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+			background: rgb(239, 239, 239);
 			text-align: center;
 		}
 
-		button.active {
-			color: red;
+		.btns>img{
+			width: 40px;
+			height: 60px;
+		
+		}
+
+		img.active {
+			border: 2px solid pink;
 		}
 	</style>
 </head>
@@ -48,15 +61,18 @@
 		</div>
 	</div>
 	<div class="btns">
-		<button id="p1">第1张</button>
+		<img id="p1"  class="active" src="./11.jpg" alt="">
+		<img id="p2" src="./22.jpg" alt="">
+		<img id="p3" src="./33.jpg" alt="">
+		<!-- <button id="p1" class="active">第1张</button>
 		<button id="p2">第2张</button>
-		<button id="p3">第3张</button>
+		<button id="p3">第3张</button> -->
 	</div>
 
 
 	<script src="./jquery-3.3.1.min.js"></script>
 	<script>
-		var allButtons = $('.btns>button')
+		var allButtons = $('.btns>img')
 		console.log(allButtons)
 		for (let i = 0; i < allButtons.length; i++) {
 			$(allButtons[i]).on('click', function (e) {
