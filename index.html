@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.window {
+			width: 400px;
+			height: 300px;
+			margin: 50px auto;
+			overflow: hidden;
+		}
+
+		.images {
+			display: inline-flex;
+			transition: transform 0.5s;
+		}
+
+		.images>img {
+			width: 400px;
+			height: 600px;
+		}
+
+		.btns {
+			text-align: center;
+		}
+
+		button.active {
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="window">
+		<div class="images">
+			<img src="./11.jpg" alt="">
+			<img src="./22.jpg" alt="">
+			<img src="./33.jpg" alt="">
+		</div>
+	</div>
+	<div class="btns">
+		<button id="p1">第1张</button>
+		<button id="p2">第2张</button>
+		<button id="p3">第3张</button>
+	</div>
+
+
+	<script src="./jquery-3.3.1.min.js"></script>
+	<script>
+		var allButtons = $('.btns>button')
+		console.log(allButtons)
+		for (let i = 0; i < allButtons.length; i++) {
+			$(allButtons[i]).on('click', function (e) {
+				var index = $(e.currentTarget).index()
+				var p = index * -400
+				$('.images').css({
+					transform: 'transLateX(' + p + 'px)'
+				})
+				// n = index
+				activeButton(allButtons.eq(index))
+			})
+		}
+
+		function activeButton($button) {
+			$button.addClass('active').siblings('.active').removeClass('active')
+		}
+
+	</script>
+</body>
+
+</html>
